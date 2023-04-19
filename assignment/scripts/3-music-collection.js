@@ -20,12 +20,12 @@ function addToCollection(title, artist, yearPublished) {
 // end addToCollection
 
 // adding albums and testing addToCollection
-console.log('Adding album: ', addToCollection('Ride the Lightning', 'Metallica', '1984'));
-console.log('Adding album: ', addToCollection('III', 'Lumineers', '2019'));
-console.log('Adding album: ', addToCollection('717 Tapes', 'Warren Zeiders', '2022'));
-console.log('Adding album: ', addToCollection('Garage, Inc.', 'Metallica', '1998'));
-console.log('Adding album: ', addToCollection('Dance Fever', 'Florence and the Machine', '2022'));
-console.log('Adding album: ', addToCollection('Orange Blood', 'Mt. Joy', '2022'));
+console.log('Adding album: ', addToCollection('Ride the Lightning', 'Metallica', 1984));
+console.log('Adding album: ', addToCollection('III', 'Lumineers', 2019));
+console.log('Adding album: ', addToCollection('717 Tapes', 'Warren Zeiders', 2022));
+console.log('Adding album: ', addToCollection('Garage, Inc.', 'Metallica', 1998));
+console.log('Adding album: ', addToCollection('Dance Fever', 'Florence and the Machine', 2022));
+console.log('Adding album: ', addToCollection('Orange Blood', 'Mt. Joy', 2022));
 console.log('The full collection is: ', collection);
 
 
@@ -69,3 +69,25 @@ function findByArtist(artist) {
 console.log('Testing findByArtist, expect 2 album objects: ', findByArtist('Metallica'));
 console.log('Testing findByArtist, expect 1 album object: ', findByArtist('Lumineers'));
 console.log('Testing findByArtist, expecting an empty array: ', findByArtist('Zach Bryan'));
+
+// #### Start of stretch goals ####
+
+//start search
+function search(criteria) {
+    let searchResults = [];
+    if (criteria === undefined || criteria === null) {
+        return collection;
+    } else {
+        for (val of collection) {
+            if (criteria.artist === val.artist && criteria.year === val.yearPublished) {
+                searchResults.push(val);
+            } // end if
+        } // end for
+        return searchResults;
+    } // end else
+} // end search
+
+console.log('Testing search, expect empty array: ', search({artist: 'Ray Charles', year: 1957}));
+console.log('Testing search, expect array with 1 object: ', search({artist: 'Metallica', year: 1984}));
+console.log('Testing search(empty), expect to see the full collection: ', search());
+console.log('Testing search(null), expect to see the full collection: ', search(null));
