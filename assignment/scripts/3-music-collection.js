@@ -20,7 +20,7 @@ function addToCollection(title, artist, yearPublished, tracks) {
 }
 // end addToCollection
 
-// adding albums and testing addToCollection
+// adding albums by testing addToCollection
 console.log('Adding album: ', addToCollection('Ride the Lightning', 'Metallica', 1984, [{name: 'Ride the Lightning', duration: '6:36'}, {name: 'For Whom The Bell Tolls', duration: '5:09'}]));
 console.log('Adding album: ', addToCollection('III', 'Lumineers', 2019, [{name: 'Gloria', duration: '3:36'}]));
 console.log('Adding album: ', addToCollection('717 Tapes', 'Warren Zeiders', 2022, [{name: 'Up To No Good', duration: '2:13'}]));
@@ -29,7 +29,7 @@ console.log('Adding album: ', addToCollection('Dance Fever', 'Florence and the M
 console.log('Adding album: ', addToCollection('Orange Blood', 'Mt. Joy', 2022, [{name: 'Bathroom Light', duration: '3:08'}]));
 console.log('The full collection is: ', collection);
 
-console.log(`-------------- Ending addToCollection, starting showCollection --------------`);
+console.log('\n -------------- Ending addToCollection, starting showCollection --------------\n ');
 
 // start showCollection
 function showCollection(array) {
@@ -52,7 +52,7 @@ function showCollection(array) {
 // testing showCollection
 showCollection(collection);
 
-console.log(`-------------- Ending showCollection, starting findByArtist --------------`);
+console.log(`\n -------------- Ending showCollection, starting findByArtist --------------\n `);
 
 // start findByArtist
 function findByArtist(artist) {
@@ -78,7 +78,7 @@ console.log('Testing findByArtist, expect 2 album objects in results array: ', f
 console.log('Testing findByArtist, expect 1 album object in results array: ', findByArtist('Lumineers'));
 console.log('Testing findByArtist, expecting an empty array: ', findByArtist('Zach Bryan'));
 
-console.log(`-------------- Ending findByArtist, starting search --------------`);
+console.log(`\n -------------- Ending findByArtist, starting search --------------\n `);
 
 
 // #### Start of stretch goals ####
