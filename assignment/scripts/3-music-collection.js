@@ -29,6 +29,7 @@ console.log('Adding album: ', addToCollection('Dance Fever', 'Florence and the M
 console.log('Adding album: ', addToCollection('Orange Blood', 'Mt. Joy', 2022, [{name: 'Bathroom Light', duration: '3:08'}]));
 console.log('The full collection is: ', collection);
 
+console.log(`-------------- Ending addToCollection, starting showCollection --------------`);
 
 // start showCollection
 function showCollection(array) {
@@ -38,7 +39,12 @@ function showCollection(array) {
 
     // looping through each album, logging values with . operator
     for (let album of array) {
-        console.log(`${album.title} by ${album.artist}, published in ${album.yearPublished}`);
+        i = 1;
+        console.log(`${album.title} by ${album.artist}, published in ${album.yearPublished}:`);
+        for (let track of album.trackList) {
+            console.log(`${i}. ${track.name}: ${track.duration}`);
+            i++;
+        }
     }
 }
 // end showCollection
@@ -46,6 +52,7 @@ function showCollection(array) {
 // testing showCollection
 showCollection(collection);
 
+console.log(`-------------- Ending showCollection, starting findByArtist --------------`);
 
 // start findByArtist
 function findByArtist(artist) {
@@ -54,7 +61,7 @@ function findByArtist(artist) {
     let results = [];
 
     // loop over each object in the collections array
-    for (val of collection) {
+    for (let val of collection) {
 
         // if the artist property of the object = the input, add it to the results array
         if (val.artist === artist) {
@@ -67,9 +74,12 @@ function findByArtist(artist) {
 // end findByArtist
 
 // findByArtist testing
-console.log('Testing findByArtist, expect 2 album objects: ', findByArtist('Metallica'));
-console.log('Testing findByArtist, expect 1 album object: ', findByArtist('Lumineers'));
+console.log('Testing findByArtist, expect 2 album objects in results array: ', findByArtist('Metallica'));
+console.log('Testing findByArtist, expect 1 album object in results array: ', findByArtist('Lumineers'));
 console.log('Testing findByArtist, expecting an empty array: ', findByArtist('Zach Bryan'));
+
+console.log(`-------------- Ending findByArtist, starting search --------------`);
+
 
 // #### Start of stretch goals ####
 
@@ -92,10 +102,10 @@ function search(criteria, trackName) {
     else if (trackName) {
 
         // iterate over each object of the array
-        for (val of collection) {
+        for (let val of collection) {
 
             // iterate over each track in the object's trackList
-            for (track of val.trackList) {
+            for (let track of val.trackList) {
 
                 // if the trackName = name property of the trackList element of album(val) object in collection array, push it to results
                 if (trackName === track.name){
