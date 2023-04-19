@@ -26,14 +26,19 @@ function addToCollection(titleName, artistName, yearPublished) {
     return newObject;
 }
 
-addToCollection('evermore', 'Taylor Swift', 2020);
-addToCollection('Midnights', 'Taylor Swift', 2022);
-console.log(collection);
 
 // - Test the `addToCollection` function:
 //   - Add 6 albums to your collection. Aim to have a mix of both same and different artists and published years. (Feel free to share your musical interests, or make stuff up. Totally fine either way.)
 //   - Console.log each album as added using the returned value.
 //   - After all are added, console.log the `collection` array.
+
+console.log(addToCollection('evermore', 'Taylor Swift', 2020));
+console.log(addToCollection('Midnights', 'Taylor Swift', 2022));
+console.log(addToCollection('folklore', 'Taylor Swift', 2020));
+console.log(addToCollection('Endless Summer', 'Miley Cyrus', 2023));
+console.log(addToCollection('Lemonade', 'Beyonce', 2016));
+console.log(addToCollection('Happier Than Ever', 'Billie Eilish', 2021));
+console.log(collection);
 
 // - Add a function named `showCollection`. This function should:
 //   - Take in an array parameter. (This allows it to be reused to show any collection, like the results from the find or search.)
