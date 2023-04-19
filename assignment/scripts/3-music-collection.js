@@ -93,6 +93,33 @@ console.log(findByArtist('Selena Gomez'));
 //     - If no results are found, return an empty array.
 //     - If there is no search object or an empty search object provided as input, then return all albums in the `collection`.
 
+let searchObject = {
+    artist: 'Ray Charles',
+    year: 1957
+}
+
+let taylorSwift = {
+    artist: 'Taylor Swift',
+    year: 2020
+}
+
+function search(searchCriteriaObject) {
+    if(arguments.length < 1) {
+        return collection;
+    }
+    let searchArray = [];
+    for(let obj of collection) {
+        if(searchCriteriaObject.artist === obj.artist && searchCriteriaObject.year === obj.year) {
+            searchArray.push(searchCriteriaObject)
+        }
+    }
+    return searchArray;
+}
+
+console.log(search(taylorSwift));
+console.log(search(searchObject));
+console.log(search());
+
 // - Add an array of `tracks` to your album objects. Each track should have a `name` and `duration`. You will need to update the functions to support this new property:
 //   - Update the `addToCollection` function to also take an input parameter for the array of tracks.
 //   - Update `search` to allow a `trackName` search criteria. 
