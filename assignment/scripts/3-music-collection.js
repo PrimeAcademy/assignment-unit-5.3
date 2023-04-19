@@ -4,13 +4,14 @@ console.log('***** Music Collection *****');
 let collection = [];
 
 // start addToCollection 
-function addToCollection(title, artist, yearPublished) {
+function addToCollection(title, artist, yearPublished, tracks) {
 
-    //create album object
+    // create album object
     var album = {
         title: title,
         artist: artist,
-        yearPublished: yearPublished
+        yearPublished: yearPublished,
+        trackList: tracks
     };
 
     // push the album to the collection & return the album
@@ -20,16 +21,16 @@ function addToCollection(title, artist, yearPublished) {
 // end addToCollection
 
 // adding albums and testing addToCollection
-console.log('Adding album: ', addToCollection('Ride the Lightning', 'Metallica', 1984));
-console.log('Adding album: ', addToCollection('III', 'Lumineers', 2019));
-console.log('Adding album: ', addToCollection('717 Tapes', 'Warren Zeiders', 2022));
-console.log('Adding album: ', addToCollection('Garage, Inc.', 'Metallica', 1998));
-console.log('Adding album: ', addToCollection('Dance Fever', 'Florence and the Machine', 2022));
-console.log('Adding album: ', addToCollection('Orange Blood', 'Mt. Joy', 2022));
+console.log('Adding album: ', addToCollection('Ride the Lightning', 'Metallica', 1984, [{name: 'Ride the Lightning', duration: '6:36'}, {name: 'For Whom The Bell Tolls', duration: '5:09'}]));
+console.log('Adding album: ', addToCollection('III', 'Lumineers', 2019, [{name: 'Gloria', duration: '3:36'}]));
+console.log('Adding album: ', addToCollection('717 Tapes', 'Warren Zeiders', 2022, [{name: 'Up To No Good', duration: '2:13'}]));
+console.log('Adding album: ', addToCollection('Garage, Inc.', 'Metallica', 1998, [{name: 'Whiskey in the Jar', duration: '5:04'}]));
+console.log('Adding album: ', addToCollection('Dance Fever', 'Florence and the Machine', 2022, [{name: 'Free', duration: '3:54'}]));
+console.log('Adding album: ', addToCollection('Orange Blood', 'Mt. Joy', 2022, [{name: 'Bathroom Light', duration: '3:08'}]));
 console.log('The full collection is: ', collection);
 
 
-//start showCollection
+// start showCollection
 function showCollection(array) {
 
     // logging the number of albums
@@ -40,9 +41,9 @@ function showCollection(array) {
         console.log(`${album.title} by ${album.artist}, published in ${album.yearPublished}`);
     }
 }
-//end showCollection
+// end showCollection
 
-//testing showCollection
+// testing showCollection
 showCollection(collection);
 
 
@@ -60,10 +61,10 @@ function findByArtist(artist) {
             results.push(val);
         }
     }
-    //return the results array
+    // return the results array
     return results;
 }
-//end findByArtist
+// end findByArtist
 
 // findByArtist testing
 console.log('Testing findByArtist, expect 2 album objects: ', findByArtist('Metallica'));
@@ -72,22 +73,62 @@ console.log('Testing findByArtist, expecting an empty array: ', findByArtist('Za
 
 // #### Start of stretch goals ####
 
-//start search
-function search(criteria) {
+// start search
+function search(criteria, trackName) {
+    // console.log(typeof(criteria), typeof(trackName));
+
+    // create empty array for results
     let searchResults = [];
-    if (criteria === undefined || criteria === null) {
+
+    // check to see if the criteria is empty or null
+    if ((criteria === undefined && trackName === undefined)) {
+
+        // return the whole collection if it is
         return collection;
-    } else {
+
+    } // end if criteria
+    
+    // trackName is true, search only using trackName
+    else if (trackName) {
+
+        // iterate over each object of the array
         for (val of collection) {
+
+            // iterate over each track in the object's trackList
+            for (track of val.trackList) {
+
+                // if the trackName = name property of the trackList element of album(val) object in collection array, push it to results
+                if (trackName === track.name){
+                    searchResults.push(val);
+                } // end if trackName
+
+            }// end for tracks
+        } // end for vals
+    } // end else if
+
+    // if criteria is the only value provided, search using that
+    else if (criteria && !trackName) {
+
+        // iterate over each object in the array
+        for (val of collection) {
+
+            // original logic - if the input artist and year match, add them to the search results
             if (criteria.artist === val.artist && criteria.year === val.yearPublished) {
                 searchResults.push(val);
+
             } // end if
         } // end for
-        return searchResults;
-    } // end else
+    } // end else if
+
+    //return the updated search results
+    return searchResults;
+
 } // end search
 
+// testing search
 console.log('Testing search, expect empty array: ', search({artist: 'Ray Charles', year: 1957}));
-console.log('Testing search, expect array with 1 object: ', search({artist: 'Metallica', year: 1984}));
+console.log('Testing search, expect array with 1 object: ', search({artist: 'Metallica', year: 1984}, 'Ride the Lightning'));
+console.log('Testing search, expect array w 1 object: ', search({artist: 'Metallica', year: 1984}, 'For Whom The Bell Tolls'));
+console.log('Testing search, expect array with 1 object: ', search({artist: 'Florence and the Machine', year: 2022}));
 console.log('Testing search(empty), expect to see the full collection: ', search());
-console.log('Testing search(null), expect to see the full collection: ', search(null));
+
