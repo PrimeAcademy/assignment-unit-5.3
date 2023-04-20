@@ -30,3 +30,36 @@ function showCollection(array) {
 }
 
 showCollection(collection);
+
+
+function findByArtist(artist) {
+let artistCollection = [];
+    for (let album of collection) {
+        if (album.artist === artist) {
+            artistCollection.push(album);
+        }
+    }
+    return artistCollection;
+}
+
+console.log({artistTest1:findByArtist('Eminem')});
+console.log({artistTest2:findByArtist('Nur-D')});
+console.log({artistTest3:findByArtist()});
+
+
+function search(object) {
+    if (!object) {
+        return collection;
+    }
+    let collectionMatches = [];
+    for (let album of collection) {
+        if (album.artist === object.artist && album.yearPublished === object.year) {
+            collectionMatches.push(album);
+        }
+    }
+    return collectionMatches;
+}
+
+console.log({searchTest1:search({artist: 'Nur-D', year: 2019})});
+console.log({searchTest2:search({artist: 'Nur-D', year: 2022})});
+console.log({searchTest3:search()});
