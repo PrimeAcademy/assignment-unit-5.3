@@ -37,3 +37,15 @@ console.log('Added album 6', album6);
    
 console.log(collection);
 // added 6 albums to collection array and console log they were added.
+
+
+//create a new function
+function showCollection(albums) {
+console.log(`There are ${albums.length} albums in the collection: `);
+//loop over album array
+for (let i = 0; i < albums.length; i++) {
+console.log(`${albums[i].title} by ${albums[i].artist},
+published in ${albums[i].yearPublished}`)}
+}
+
+showCollection(collection);
