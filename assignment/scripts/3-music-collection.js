@@ -93,6 +93,7 @@ console.log(findByArtist('Selena Gomez'));
 //     - If no results are found, return an empty array.
 //     - If there is no search object or an empty search object provided as input, then return all albums in the `collection`.
 
+
 let searchObject = {
     artist: 'Ray Charles',
     year: 1957
@@ -136,3 +137,21 @@ console.log(search());
 // ```
 
 // > Make sure to test all your code!
+
+//This is as far as I got, I am not sure if I am understand the intructions correctly
+
+function addToCollection(titleName, artistName, yearPublished, tracksArray) {
+    let newObject = {
+        title: titleName,
+        artist: artistName,
+        year: yearPublished,
+        tracks: [
+            {
+                trackName: tracksArray.trackName,
+                trackDuration: tracksArray.trackDuration
+            }
+        ]
+    }
+    collection.push(newObject);
+    return newObject;
+}
