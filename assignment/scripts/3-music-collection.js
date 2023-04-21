@@ -49,3 +49,20 @@ published in ${albums[i].yearPublished}`)}
 }
 
 showCollection(collection);
+
+// new function
+function findByArtist(artist){
+let matchingArtist = [];
+for (let i = 0; i < collection.length; i++) {
+if (collection[i].artist === artist) {
+matchingArtist.push(collection[i]);}
+}
+return matchingArtist;
+}
+
+//test function
+let papaSmurfAlbums = findByArtist('PapaSmurf');
+console.log(`Found ${papaSmurfAlbums.length} albums by papaSmurf`);
+
+let slimShadyAlbums = findByArtist('slimShady');
+console.log(`Found ${slimShadyAlbums.length} albums by slimShady`);
