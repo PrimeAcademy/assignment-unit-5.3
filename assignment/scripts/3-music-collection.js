@@ -105,13 +105,9 @@ const search = (searchObj = { artist: '', year: '', trackName: '' }) => {
   const { artist, year, trackName } = searchObj;
   // search track, ignoring artist and year
   if (trackName) {
-    return collection.filter((album) => {
-      for (let track of album.tracks) {
-        if (track.name === trackName) {
-          return true;
-        }
-      }
-    });
+    return collection.filter((album) =>
+      album.tracks.find((track) => track.name === trackName)
+    );
   }
   // search for artist and year
   if (searchObj.artist && searchObj.year) {
