@@ -22,11 +22,15 @@ const showCollection = (collectionArray) => {
 };
 
 // add content to collection
-addToCollection('Tonight, Tonight', 'The Smashing Pumpkins', 1995);
-addToCollection('Fake Plastic Trees', 'Radiohead', 1995);
-addToCollection('The National Anthem', 'Radiohead', 2000);
-addToCollection('Smells Like Teen Spirit', 'Nirvana', 1991);
-addToCollection('Fight The Power', 'Public Enemy', 1989);
+addToCollection(
+  'Mellon Collie and the Infinite Sadness',
+  'The Smashing Pumpkins',
+  1996
+);
+addToCollection('The Bends', 'Radiohead', 1995);
+addToCollection('Kid A', 'Radiohead', 2001);
+addToCollection('Nevermind', 'Nirvana', 1992);
+addToCollection('Fear of a Black Planet', 'Public Enemy', 1990);
 
 // test showCollection
 showCollection(collection);
@@ -40,11 +44,14 @@ const findByArtist = (artist) => {
 
 // test findByArtist
 // multiple finds
-const radioheadSongs = findByArtist('Radiohead');
-console.log('\nSongs by Radiohead:', radioheadSongs);
+const radiohead = findByArtist('Radiohead');
+console.log('\nSongs by Radiohead:', radiohead);
 // single find, also test that function is not case sensitive
-const smashingPumpkinsSongs = findByArtist('the smashing pumpkins');
-console.log('\nSongs by The Smashing Pumpkins:', smashingPumpkinsSongs);
+const smashingPumpkins = findByArtist('the smashing pumpkins');
+console.log('\nSongs by The Smashing Pumpkins:', smashingPumpkins);
 // no find, returns empty array
-const biggieSmallsSongs = findByArtist('The Notorious B.I.G.');
-console.log('\nSongs by The Notorious B.I.G.', biggieSmallsSongs);
+const biggieSmalls = findByArtist('The Notorious B.I.G.');
+console.log('\nSongs by The Notorious B.I.G.', biggieSmalls);
+
+// search
+const search = (searchObj) => {};
