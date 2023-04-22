@@ -34,6 +34,21 @@ let findByArtist = (artist) => {
     return artistCollection;
 };
 
+let search = (criteria) => {
+    let matchingAlbums = [];
+    for (let album of collection) {
+        let isMatching = Object.entries(criteria).reduce(
+            (m, [key, value]) =>
+                Object.hasOwn(album, key) && album[key] === value && m,
+            true
+        );
+        if (isMatching) {
+            matchingAlbums.push(album);
+        }
+    }
+    return matchingAlbums;
+};
+
 // main
 addToCollection('Emotions and Math', 'Margaret Glaspy', 2016);
 addToCollection('Bad Brains', 'Bad Brains', 1982);
@@ -59,6 +74,14 @@ addToCollection('Son of Schmilsson', 'Nilsson', 1972);
 console.log('Full collection:');
 showCollection(collection);
 
-console.log('---')
+console.log('---');
 console.log('Nilsson albums:');
 showCollection(findByArtist('nilsson'));
+
+console.log('---');
+console.log('Albums from 1971:');
+showCollection(
+    search({
+        yearPublished: 1971,
+    })
+);
