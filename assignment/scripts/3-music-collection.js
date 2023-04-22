@@ -101,24 +101,49 @@ const biggieSmalls = findByArtist('The Notorious B.I.G.');
 console.log('\nSongs by The Notorious B.I.G.', biggieSmalls);
 
 // search
-const search = (searchObj = { artist: '', year: '' }) => {
-  const { artist, year } = searchObj;
+const search = (searchObj = { artist: '', year: '', trackName: '' }) => {
+  const { artist, year, trackName } = searchObj;
+  // search track, ignoring artist and year
+  if (trackName) {
+    return collection.filter((album) => {
+      for (let track of album.tracks) {
+        if (track.name === trackName) {
+          return true;
+        }
+      }
+    });
+  }
+  // search for artist and year
   if (searchObj.artist && searchObj.year) {
     return collection.filter(
       (album) => album.artist === artist && album.yearPublished === year
     );
-  } else {
-    return collection;
   }
+  // else return collection if criteria was not provided
+  return collection;
 };
 
 // search tests
+// one album
 const publicEnemy1990Search = search({ artist: 'Public Enemy', year: 1990 });
 console.log('Should log one album');
 console.log(publicEnemy1990Search);
+
+// empty array
 const notFoundSearch = search({ artist: 'Public Enemy', year: 1995 });
 console.log('Should log empty array');
 console.log(notFoundSearch);
+
+// full collection
 const emptySearch = search();
 console.log('Should log full collection');
 console.log(emptySearch);
+
+// search for a track, should log album track belongs to
+const tonightTrackSearch = search({ trackName: 'Tonight, Tonight' });
+console.log('Should log The Smashing Pumpkins album');
+console.log(tonightTrackSearch);
+
+const plasticTrackSearch = search({ trackName: 'Fake Plastic Trees' });
+console.log('Should log Radiohead album');
+console.log(plasticTrackSearch);
