@@ -3,6 +3,10 @@ console.log("***** Music Collection *****");
 // collection array
 let collection = [];
 
+// ---------------
+// Functions
+// ---------------
+
 // add to collection function
 const addToCollection = (title, artist, yearPublished) => {
   const addition = { title, artist, yearPublished };
@@ -30,6 +34,24 @@ const findByArtist = (artist) => {
 
   return results;
 };
+
+const search = ({ artist, year } = {}) => {
+  if (!artist || !year) {
+    return collection;
+  }
+  const results = collection.filter((album) => {
+    return (
+      artist.toLowerCase() === album.artist.toLowerCase() &&
+      year === album.yearPublished
+    );
+  });
+
+  return results;
+};
+
+// ----------
+// Tests
+// ----------
 
 // test addToCollection
 console.log(
@@ -74,4 +96,21 @@ console.log(
 console.log(
   "Search Results for album not in collection",
   findByArtist("Michael Jackson")
+);
+
+// test search
+console.log(
+  "add item for multiple matches",
+  addToCollection("Search Test", "Silversun Pickups", 2006)
+);
+console.log("--- Search ---");
+console.log("No Search Object shows entire collection", search());
+console.log("Shows a match", search({ artist: "Steven Wilson", year: 2013 }));
+console.log(
+  "Shows multiple matches",
+  search({ artist: "silVerSUn pickups", year: 2006 })
+);
+console.log(
+  "criteria doesn't match returns empy array",
+  search({ artist: "Steven Wilson", year: 2014 })
 );
