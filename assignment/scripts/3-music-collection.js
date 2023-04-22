@@ -24,9 +24,17 @@ let showCollection = (albumArray) => {
     }
 };
 
-// main
-console.log('Before adding:', collection);
+let findByArtist = (artist) => {
+    let artistCollection = [];
+    for (let album of collection) {
+        if (album.artist.toLowerCase() === artist.toLowerCase()) {
+            artistCollection.push(album);
+        }
+    }
+    return artistCollection;
+};
 
+// main
 addToCollection('Emotions and Math', 'Margaret Glaspy', 2016);
 addToCollection('Bad Brains', 'Bad Brains', 1982);
 addToCollection('Slow Train Coming', 'Bob Dylan', 1979);
@@ -40,10 +48,17 @@ addToCollection('Sweet Revenge', 'John Prine', 1973);
 addToCollection('Bruised Orange', 'John Prine', 1978);
 addToCollection('In My Own Time', 'Karen Dalton', 1971);
 addToCollection('The Dreaming', 'Kate Bush', 1982);
-addToCollection('LUSH', 'Mitski', 2012);
 addToCollection('Puberty 2', 'Mitski', 2016);
 addToCollection('Be the Cowboy', 'Mitski', 2018);
+addToCollection('Aerial Ballet', 'Nilsson', 1968);
+addToCollection('Harry', 'Nilsson', 1969);
+addToCollection('Nilsson Schmilsson', 'Nilsson', 1971);
+addToCollection('Nilsson Sings Newman', 'Nilsson', 1970);
+addToCollection('Son of Schmilsson', 'Nilsson', 1972);
 
-console.log('After adding:', collection);
-
+console.log('Full collection:');
 showCollection(collection);
+
+console.log('---')
+console.log('Nilsson albums:');
+showCollection(findByArtist('nilsson'));
