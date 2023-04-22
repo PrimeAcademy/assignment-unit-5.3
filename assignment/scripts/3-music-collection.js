@@ -20,11 +20,13 @@ addToCollection("Cold Like War", "We Came As Romans", 2017);
 addToCollection("Voices in My Head", "Falling in Reverse", 2022);
 addToCollection("Toxic", "Lauren Babic", 2019);
 
-function showCollection() {
-  console.log(collection.length);
-  for (let song of collection) {
-    console.log(collection[song].yearPublished);
+function showCollection(arrayParam) {
+  console.log(arrayParam.length);
+  for (let songs of arrayParam) {
+    console.log(
+      `${songs.title} by ${songs.artist} published in ${songs.yearPublished}`
+    );
   }
 }
 
-showCollection();
+showCollection(collection);
