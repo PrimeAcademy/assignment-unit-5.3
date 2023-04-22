@@ -38,7 +38,7 @@ showCollection(collection);
 // findByArtist
 const findByArtist = (artist) => {
   return collection.filter(
-    (song) => song.artist.toLowerCase() === artist.toLowerCase()
+    (album) => album.artist.toLowerCase() === artist.toLowerCase()
   );
 };
 
@@ -54,4 +54,17 @@ const biggieSmalls = findByArtist('The Notorious B.I.G.');
 console.log('\nSongs by The Notorious B.I.G.', biggieSmalls);
 
 // search
-const search = (searchObj) => {};
+const search = (searchObj) => {
+  const { artist, year } = searchObj;
+  if (artist && year) {
+    return collection.filter(
+      (album) => album.artist === artist && album.yearPublished === year
+    );
+  } else {
+    return collection;
+  }
+};
+
+const publicEnemy1990Search = search({ artist: 'Public Enemy', year: '1990' });
+const notFoundSearch = search({ artist: 'Public Enemy', year: '1995' });
+const emptySearch = search();
