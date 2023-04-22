@@ -54,9 +54,9 @@ const biggieSmalls = findByArtist('The Notorious B.I.G.');
 console.log('\nSongs by The Notorious B.I.G.', biggieSmalls);
 
 // search
-const search = (searchObj) => {
+const search = (searchObj = { artist: '', year: '' }) => {
   const { artist, year } = searchObj;
-  if (artist && year) {
+  if (searchObj.artist && searchObj.year) {
     return collection.filter(
       (album) => album.artist === artist && album.yearPublished === year
     );
@@ -65,6 +65,12 @@ const search = (searchObj) => {
   }
 };
 
-const publicEnemy1990Search = search({ artist: 'Public Enemy', year: '1990' });
-const notFoundSearch = search({ artist: 'Public Enemy', year: '1995' });
+const publicEnemy1990Search = search({ artist: 'Public Enemy', year: 1990 });
+console.log('Should log one album');
+console.log(publicEnemy1990Search);
+const notFoundSearch = search({ artist: 'Public Enemy', year: 1995 });
+console.log('Should log empty array');
+console.log(notFoundSearch);
 const emptySearch = search();
+console.log('Should log full collection');
+console.log(emptySearch);
