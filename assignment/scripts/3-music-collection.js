@@ -8,8 +8,8 @@ let collection = [];
 // ---------------
 
 // add to collection function
-const addToCollection = (title, artist, yearPublished) => {
-  const addition = { title, artist, yearPublished };
+const addToCollection = (title, artist, yearPublished, tracks) => {
+  const addition = { title, artist, yearPublished, tracks };
   collection.push(addition);
   return addition;
 };
@@ -20,6 +20,13 @@ const showCollection = (array) => {
   for (let album of array) {
     const { title, artist, yearPublished } = album;
     console.log(`${title} by ${artist}, published in ${yearPublished}`);
+    for (let i = 0; i < album.tracks.length; i++) {
+      console.log(
+        `${i + 1}. ${album.tracks[i].name}: ${formatDuration(
+          album.tracks[i].duration
+        )}`
+      );
+    }
   }
 };
 
@@ -35,7 +42,18 @@ const findByArtist = (artist) => {
   return results;
 };
 
-const search = ({ artist, year } = {}) => {
+const search = ({ artist, year, trackName = "" } = {}) => {
+  if (trackName) {
+    const results = collection.filter((album) => {
+      for (let track of album.tracks) {
+        if (track.name.toLowerCase() === trackName.toLowerCase()) {
+          return true;
+        }
+      }
+      return false;
+    });
+    return results;
+  }
   if (!artist || !year) {
     return collection;
   }
@@ -49,38 +67,72 @@ const search = ({ artist, year } = {}) => {
   return results;
 };
 
+const formatDuration = (milliseconds) => {
+  const minutes = Math.floor(milliseconds / 60000);
+  let seconds = (milliseconds % 60000) / 1000;
+  if (seconds.toString().length === 1) {
+    seconds = `0${seconds.toString()}`;
+  }
+  return `${minutes}:${seconds}`;
+};
+
 // ----------
 // Tests
 // ----------
 
 // test addToCollection
+
+// duration = number in seconds
+const testTracks = [
+  { name: "Track 1", duration: 241000 },
+  { name: "Track 2", duration: 212000 },
+  { name: "Track 3", duration: 241000 },
+  { name: "Track 4", duration: 212000 },
+  { name: "Track 5", duration: 241000 },
+  { name: "Track 6", duration: 212000 },
+];
+const testTracks7 = [
+  { name: "Track 1", duration: 241000 },
+  { name: "Track 2", duration: 212000 },
+  { name: "Track 3", duration: 241000 },
+  { name: "Track 4", duration: 212000 },
+  { name: "Track 5", duration: 241000 },
+  { name: "Track 6", duration: 212000 },
+  { name: "Track 7", duration: 212000 },
+];
 console.log(
   "add to collection:",
-  addToCollection("Carnavas", "Silversun Pickups", 2006)
+  addToCollection("Carnavas", "Silversun Pickups", 2006, testTracks)
 );
 console.log(
   "add to collection:",
   addToCollection(
     "The Raven That Refused To Sing (And Other Stories)",
     "Steven Wilson",
-    2013
+    2013,
+    testTracks
   )
 );
 console.log(
   "add to collection:",
-  addToCollection("Swoon", "Silversun Pickups", 2009)
+  addToCollection("Swoon", "Silversun Pickups", 2009, testTracks)
 );
 console.log(
   "add to collection:",
-  addToCollection("Hand. Cannot. Erase.", "Steven Wilson", 2015)
+  addToCollection("Hand. Cannot. Erase.", "Steven Wilson", 2015, testTracks7)
 );
 console.log(
   "add to collection:",
-  addToCollection("Maps of Non-Existent Places", "Thank You Scientist", 2013)
+  addToCollection(
+    "Maps of Non-Existent Places",
+    "Thank You Scientist",
+    2013,
+    testTracks
+  )
 );
 console.log(
   "add to collection:",
-  addToCollection("Revolver", "The Beetles", 1966)
+  addToCollection("Revolver", "The Beetles", 1966, testTracks7)
 );
 
 console.log("collection:", collection);
@@ -101,7 +153,7 @@ console.log(
 // test search
 console.log(
   "add item for multiple matches",
-  addToCollection("Search Test", "Silversun Pickups", 2006)
+  addToCollection("Search Test", "Silversun Pickups", 2006, testTracks)
 );
 console.log("--- Search ---");
 console.log("No Search Object shows entire collection", search());
@@ -113,4 +165,12 @@ console.log(
 console.log(
   "criteria doesn't match returns empy array",
   search({ artist: "Steven Wilson", year: 2014 })
+);
+console.log(
+  "trackname only search returns results",
+  search({ trackName: "Track 7" })
+);
+console.log(
+  "if trackname ignores otoher criteria",
+  search({ artist: "Bob Dylan", year: 1963, trackName: "Track 7" })
 );
