@@ -1,5 +1,4 @@
 console.log("***** Music Collection *****");
-
 collection = [];
 
 function addToCollection(title, artist, yearPublished) {
@@ -28,5 +27,17 @@ function showCollection(arrayParam) {
     );
   }
 }
-
 showCollection(collection);
+
+//
+function findByArtist(artistString) {
+  artistArray = [];
+  for (let i = 0; i < collection.length; i++) {
+    if (collection[i].artist === artistString) {
+      artistArray.push(collection[i]);
+      console.log(artistArray);
+    }
+  }
+}
+findByArtist("Lauren Babic");
+findByArtist("Jimmy Buffett");
