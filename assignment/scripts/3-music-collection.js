@@ -118,6 +118,8 @@ console.log(search({ artist: 'Ray Charles', year: 1957 }));
 
 console.log(search({ artist: 'Red Hot Chili Peppers', year: 2006 }));
 
+//Testing an empty input, should return collection
 console.log(search());
 
+//Testing an empty object, should return collection
 console.log(search({}));
