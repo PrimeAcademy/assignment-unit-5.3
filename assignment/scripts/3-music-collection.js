@@ -15,7 +15,13 @@ function addToCollection(title, artist, yearPublished){
 
 };
 
-addToCollection('Enema of the State', 'Blink 182', '1999');
+console.log('New album added:', addToCollection('Enema of the State', 'Blink 182', '1999'));
+console.log('New album added:', addToCollection('The Colour and the Shape', ' Foo Fighters', '1997'));
+console.log('New album added:', addToCollection('By the Way', 'Red Hot Chili Peppers', '2002'));
+console.log('New album added:', addToCollection('Dookie', 'Green Day', '1994'));
+console.log('New album added:', addToCollection('Meteora', 'Linkin Park', '2003'));
+console.log('New album added:', addToCollection('Hot Fuss', 'The Killers', '2004'));
+
 console.log(collection);
 
 
