@@ -16,6 +16,7 @@ function addToCollection(title, artist, yearPublished){
 };
 
 console.log('New album added:', addToCollection('Enema of the State', 'Blink 182', '1999'));
+console.log('New album added:', addToCollection('Take Off Your Pants and Jacket', 'Blink 182', '2001'));
 console.log('New album added:', addToCollection('The Colour and the Shape', ' Foo Fighters', '1997'));
 console.log('New album added:', addToCollection('By the Way', 'Red Hot Chili Peppers', '2002'));
 console.log('New album added:', addToCollection('Dookie', 'Green Day', '1994'));
@@ -27,34 +28,49 @@ console.log('My album collection:',collection);
 // - Add a function named `showCollection`. This function should:
 //   - Take in an array parameter. (This allows it to be reused to show any collection, like 
 // the results from the find or search.)
+
 function showCollection(albumArray){
+
 //   - Console.log the number of items in the array.
     console.log(albumArray.lenght)
-    
+    //   - Loop over the array and console.log each album's information formatted like: 
+// `TITLE by ARTIST, published in YEAR`.
     for (newAlbum of albumArray){
-        console.log(`${newAlbum.title} by ${newAlbum.title} in ${newAlbum.title}`);
+        console.log(`${newAlbum.title} by ${newAlbum.artist} in ${newAlbum.yearPublished}`);
+       
     }
     return albumArray;
-  
-
-//   - Console.log the number of items in the array.
-//   - Loop over the array and console.log each album's information formatted like: 
-// `TITLE by ARTIST, published in YEAR`.
 
 };
-console.log(showCollection(collection)); 
-
-
-// - Add a function named `showCollection`. This function should:
-//   - Take in an array parameter. (This allows it to be reused to show any collection, like 
-// the results from the find or search.)
-//   - Console.log the number of items in the array.
-//   - Loop over the array and console.log each album's information formatted like: 
-// `TITLE by ARTIST, published in YEAR`.
-
-// - Test the `showCollection` function.
+console.log('about my collection:', showCollection(collection)); 
 
 // - Add a function named `findByArtist`. This function should:
+
+//   - Take in `artist` (a string) parameter
+function findByArtist(){
+//   - Create an array to hold any results, empty to start
+    let searchArtist = []
+// - Loop through the `collection` and add any objects with a matching artist to the array
+    
+for (let artist of collection){
+        if (artist == newAlbum.artist);
+        searchArtist.push(artist);
+        return searchArtist;
+    } 
+    return searchArtist;
+
+    // for (let i = 0; i < newAlbum.artist; i++){
+    //     searchArtist += newAlbum.artist;
+    //     return searchArtist;
+    // }
+
+    // return searchArtist;
+//   - Return the array with the matching results. If no results are found, return an empty array.
+}
+console.log('Album by same artist:', findByArtist('blink 182'));
+
+
+
 //   - Take in `artist` (a string) parameter
 //   - Create an array to hold any results, empty to start
 //   - Loop through the `collection` and add any objects with a matching artist to the array.
@@ -100,3 +116,6 @@ console.log(showCollection(collection));
 //     1. NAME: DURATION
 //     2. NAME: DURATION
 // ```
+
+
+
