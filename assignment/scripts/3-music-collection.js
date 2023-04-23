@@ -57,11 +57,36 @@ function addToCollection(title, artist, yearPublished) {
 console.log(addToCollection(arrayofRecords));
 
 function showCollection(arrayParameter){
-    console.log(arrayParameter.length);
+    console.log('Number of items in the array: ' + arrayParameter.length);
      for (let loopedArray of arrayParameter) {
-        console.log('Title by', loopedArray.title);
-        console.log('Artist:', loopedArray.artist);
-        console.log('Published in', loopedArray.yearPublished);
+       console.log(loopedArray);
      }
    }
 
+   //Test:
+   let arrayParameter = ['Californication', 'Red Hot Chili Peppers', 1999];
+
+showCollection(arrayParameter);
+
+//Another test array on the function showCollection;
+
+let practiceArray = ['Tekkno', 'Electric Callboy', 2022];
+console.log(showCollection(practiceArray));
+
+//Adding in a function to find artist;
+
+function findbyArtist(artist) {
+    let newArtistArray = [];
+    for (let pulledArtist of Collection){
+        if (artist === pulledArtist.artist) {
+            newArtistArray.push(pulledArtist) 
+     } 
+     console.log(newArtistArray);
+  }
+}
+
+let artist = 'Electric Callboy';
+
+//Testing the function 
+
+console.log(findbyArtist(artist));
