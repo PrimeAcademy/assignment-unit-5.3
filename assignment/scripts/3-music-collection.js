@@ -34,4 +34,16 @@ for (let myArray of array) {
 }
 showCollection((collection));
 
+function findByArtist(artist) {
+    let holdArray = [];
+    for (let match of collection) {
+    if(match.artist === artist) {
+        holdArray.push(match);
+        
+        }
+    }
+        return holdArray;
+    }
+  let me = findByArtist("SZA");
+  console.log(me);
 
