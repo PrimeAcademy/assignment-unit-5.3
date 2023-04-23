@@ -53,40 +53,71 @@ function addToCollection(title, artist, yearPublished) {
     Collection.push(record);
     return record;
 }
+//Test #1 adding in a single record
+console.log(addToCollection('Tekko', 'Electric Callboy', 2022));
 
-console.log(addToCollection(arrayofRecords));
+// Test on Array of Records adding a loop to add multiple records to collection
+for (let record of arrayofRecords) {
+   console.log('Adding Record', addToCollection(record.title, record.artist, record.yearPublished));
+}// adding to array 
+console.log(Collection);
 
-function showCollection(arrayParameter){
+
+
+//Show Collection function
+function showCollection(arrayParameter) {
     console.log('Number of items in the array: ' + arrayParameter.length);
-     for (let loopedArray of arrayParameter) {
-       console.log(loopedArray);
-     }
-   }
 
-   //Test:
-   let arrayParameter = ['Californication', 'Red Hot Chili Peppers', 1999];
+    for (let loopedArray of arrayParameter) {
+        console.log(`${loopedArray.title} by ${loopedArray.artist}, published in ${loopedArray.yearPublished}. `);
+    }
+}
 
-showCollection(arrayParameter);
+//Test:
 
-//Another test array on the function showCollection;
-
-let practiceArray = ['Tekkno', 'Electric Callboy', 2022];
-console.log(showCollection(practiceArray));
+showCollection(Collection);
 
 //Adding in a function to find artist;
 
 function findbyArtist(artist) {
     let newArtistArray = [];
-    for (let pulledArtist of Collection){
+    for (let pulledArtist of Collection) {
         if (artist === pulledArtist.artist) {
-            newArtistArray.push(pulledArtist) 
-     } 
-     console.log(newArtistArray);
-  }
+            newArtistArray.push(pulledArtist);
+        }         
+    }
+    return newArtistArray;
 }
 
 let artist = 'Electric Callboy';
 
 //Testing the function 
 
-console.log(findbyArtist(artist));
+console.log(`Finding all records by ${artist}:` , findbyArtist(artist));
+
+
+//Stretch Goals
+
+function search(searchParameter) {
+    let newRecordSearch = [];
+    if (searchParameter === undefined || Object.keys(searchParameter).length === 0) {
+        return Collection;
+    }
+    for (let record of Collection) {
+        if (searchParameter.artist == record.artist && record.yearPublished == searchParameter.year) {
+            newRecordSearch.push(record);
+        }
+    }
+    return newRecordSearch;
+}
+//Test for Ray Charles record non-existing in collection;
+
+console.log(search({ artist: 'Ray Charles', year: 1957 }));
+
+//Test for existing collection record;
+
+console.log(search({ artist: 'Red Hot Chili Peppers', year: 2006 }));
+
+console.log(search());
+
+console.log(search({}));
