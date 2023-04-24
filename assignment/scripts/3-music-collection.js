@@ -1,9 +1,16 @@
 console.log('***** Music Collection *****')
+
+// Created a variable called collection and wrote
+// the function addTo Collection
+
 let collection = [];
 
 function addToCollection (album) {
     collection.push(album);
+    return album;
 }
+
+// Created objects for each album with their properties
 
 const album1 = {
     title: 'Hopes And Fears',
@@ -36,10 +43,57 @@ const album6 = {
     artist: 'Linkin Park',
     yearPublished: '2007',
 }
+
+// Added each album to collection. Logging each one in connsole and then
+// logging the collection array.
+
 addToCollection(album1);
+console.log(album1);
+
 addToCollection(album2);
+console.log(album2);
+
 addToCollection(album3);
+console.log(album3);
+
 addToCollection(album4);
+console.log(album4);
+
 addToCollection(album5);
+console.log(album5);
+
 addToCollection(album6);
+console.log(album6);
+
 console.log(collection);
+
+// Created a function called showCollection
+
+function showCollection(collection) {
+    console.log("Number of albums in Collection: ", collection.length);
+
+    for (album of collection) {
+            console.log("Title by Artist: " + album.title + " by " + album.artist);
+            console.log("Published in Year: " + album.yearPublished);
+    }
+}
+// Tested function showCollection
+
+showCollection(collection);
+
+// Created function findByArtist
+
+function findByArtist(artist) {
+    let results = [];
+    for (let album of collection) {
+        if (album.artist === artist) {
+            results.push(album);
+        }
+        
+    }
+    return results;
+} 
+// Tested function findByArtist
+
+console.log(findByArtist("Linkin Park"));
+console.log(findByArtist("Coldplay"));
