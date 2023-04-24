@@ -97,3 +97,19 @@ function findByArtist(artist) {
 
 console.log(findByArtist("Linkin Park"));
 console.log(findByArtist("Coldplay"));
+
+// Stretch goals
+
+function search (artist, year) {
+    let searchResults = [];
+    for (let album of collection) {
+        if (album.artist === artist && album.yearPublished === year) {
+            searchResults.push("artist: " + album.artist + ", " + "year: " + album.yearPublished);
+        }
+    }
+    return searchResults;
+}
+
+// Testing search function
+console.log(search("Linkin Park", "2010"));
+console.log(search());
