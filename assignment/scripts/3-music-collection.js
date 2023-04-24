@@ -1,4 +1,9 @@
 console.log("***** Music Collection *****");
+// ---------------
+// Data
+// ---------------
+import { tracksData, testTracks, testTracks7 } from "../utils/tracksData.js";
+import { formatDuration } from "../utils/formatDuration.js";
 
 // collection array
 let collection = [];
@@ -33,7 +38,7 @@ const showCollection = (array) => {
 // fing by artist function
 const findByArtist = (artist) => {
   let results = [];
-  for (album of collection) {
+  for (let album of collection) {
     if (album.artist.toLowerCase() === artist.toLowerCase()) {
       results.push(album);
     }
@@ -67,42 +72,17 @@ const search = ({ artist, year, trackName = "" } = {}) => {
   return results;
 };
 
-const formatDuration = (milliseconds) => {
-  const minutes = Math.floor(milliseconds / 60000);
-  let seconds = (milliseconds % 60000) / 1000;
-  if (seconds.toString().length === 1) {
-    seconds = `0${seconds.toString()}`;
-  }
-  return `${minutes}:${seconds}`;
-};
-
 // ----------
 // Tests
 // ----------
 
 // test addToCollection
 
-// duration = number in seconds
-const testTracks = [
-  { name: "Track 1", duration: 241000 },
-  { name: "Track 2", duration: 212000 },
-  { name: "Track 3", duration: 241000 },
-  { name: "Track 4", duration: 212000 },
-  { name: "Track 5", duration: 241000 },
-  { name: "Track 6", duration: 212000 },
-];
-const testTracks7 = [
-  { name: "Track 1", duration: 241000 },
-  { name: "Track 2", duration: 212000 },
-  { name: "Track 3", duration: 241000 },
-  { name: "Track 4", duration: 212000 },
-  { name: "Track 5", duration: 241000 },
-  { name: "Track 6", duration: 212000 },
-  { name: "Track 7", duration: 212000 },
-];
+// duration = number in milleseconds
+
 console.log(
   "add to collection:",
-  addToCollection("Carnavas", "Silversun Pickups", 2006, testTracks)
+  addToCollection("Carnavas", "Silversun Pickups", 2006, tracksData.carnavas)
 );
 console.log(
   "add to collection:",
@@ -110,7 +90,7 @@ console.log(
     "The Raven That Refused To Sing (And Other Stories)",
     "Steven Wilson",
     2013,
-    testTracks
+    tracksData.theRavenThatRefusedToSing
   )
 );
 console.log(
@@ -138,24 +118,30 @@ console.log(
 console.log("collection:", collection);
 
 // test showCollection
+console.log("--My Colection of music--");
 showCollection(collection);
 
+// test search
+console.log("---- Search ----");
 // test findByArtist
+console.log("   --find by artist--");
 console.log(
-  "Search Results for Silversun Pickups",
-  findByArtist("siLveRSun pIckuPs")
+  "Artist Search Results for Silversun Pickups",
+  findByArtist("siLveRSun pIckuPs"),
+  showCollection(findByArtist("siLveRSun pIckuPs"))
 );
 console.log(
-  "Search Results for album not in collection",
+  "Artist Search Results for artist not in collection",
   findByArtist("Michael Jackson")
 );
 
-// test search
+console.log("   --search by track--");
+
 console.log(
   "add item for multiple matches",
   addToCollection("Search Test", "Silversun Pickups", 2006, testTracks)
 );
-console.log("--- Search ---");
+
 console.log("No Search Object shows entire collection", search());
 console.log("Shows a match", search({ artist: "Steven Wilson", year: 2013 }));
 console.log(
@@ -166,6 +152,7 @@ console.log(
   "criteria doesn't match returns empy array",
   search({ artist: "Steven Wilson", year: 2014 })
 );
+
 console.log(
   "trackname only search returns results",
   search({ trackName: "Track 7" })
@@ -173,4 +160,12 @@ console.log(
 console.log(
   "if trackname ignores otoher criteria",
   search({ artist: "Bob Dylan", year: 1963, trackName: "Track 7" })
+);
+console.log(
+  "real trackname search works",
+  search({ artist: "Steven Wilson", year: 500021.3, trackName: "Drive Home" })
+);
+console.log("real trackname search using showCollection");
+showCollection(
+  search({ artist: "Steven Wilson", year: 500021.3, trackName: "Drive Home" })
 );
