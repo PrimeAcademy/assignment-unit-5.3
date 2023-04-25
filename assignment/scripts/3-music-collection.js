@@ -9,10 +9,8 @@ function addToCollection(title, artist, yearPublished){
         artist: artist ,
         yearPublished: yearPublished
     }
-
     collection.push(newAlbum);
     return newAlbum;
-
 };
 
 console.log('New album added:', addToCollection('Enema of the State', 'Blink 182', '1999'));
@@ -36,10 +34,9 @@ function showCollection(albumArray){
     console.log('My albums so far:',albumArray.lenght)
     for (newAlbum of albumArray){
         console.log(`${newAlbum.title} by ${newAlbum.artist} in ${newAlbum.yearPublished}`);
-   
     }
     return albumArray;
-};
+}
 console.log('About my collection:', showCollection(collection)); 
 
 console.log('--FIND BY ARTIST FUNCTION--');
@@ -60,20 +57,10 @@ function findByArtist(artist){
         return artistArray;
     } 
     return artistArray;
-
-    // for (let i = 0; i < newAlbum.artist; i++){
-    //     searchArtist += newAlbum.artist;
-    //     return searchArtist;
-    // }
-
-    // return searchArtist;
 }
+
 console.log('Album by same artist:', findByArtist('blink 182'));
 console.log({artistTest1: findByArtist('blink182')});
-
-
-
-
 
 // - Test the `findByArtist` function. Make sure to test with an artist you know is in the 
 // collection, as well as an artist you know is not in your collection. Check that for 
