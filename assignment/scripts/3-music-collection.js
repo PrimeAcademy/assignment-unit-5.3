@@ -123,3 +123,5 @@ console.log(search());
 
 //Testing an empty object, should return collection
 console.log(search({}));
+
+
