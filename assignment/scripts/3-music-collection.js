@@ -73,8 +73,7 @@ function showCollection(collection) {
     console.log("Number of albums in Collection: ", collection.length);
 
     for (album of collection) {
-            console.log("Title by Artist: " + album.title + " by " + album.artist);
-            console.log("Published in Year: " + album.yearPublished);
+            console.log(album.title + " by " + album.artist + ", published in " + album.yearPublished);
     }
 }
 // Tested function showCollection
@@ -89,27 +88,39 @@ function findByArtist(artist) {
         if (album.artist === artist) {
             results.push(album);
         }
-        
     }
     return results;
 } 
 // Tested function findByArtist
 
 console.log(findByArtist("Linkin Park"));
+console.log(findByArtist("Paramore"));
 console.log(findByArtist("Coldplay"));
 
 // Stretch goals
+
+// Created search function
 
 function search (artist, year) {
     let searchResults = [];
     for (let album of collection) {
         if (album.artist === artist && album.yearPublished === year) {
-            searchResults.push("artist: " + album.artist + ", " + "year: " + album.yearPublished);
+            searchResults.push("artist: " + album.artist + ", year: " + album.yearPublished);
         }
     }
+    if (artist || year) {
+            searchResults;
+    }
+    if (!artist && !year) {
+            searchResults.push(collection);
+        }
     return searchResults;
 }
 
 // Testing search function
 console.log(search("Linkin Park", "2010"));
-console.log(search());
+console.log(search("Keane"));
+console.log(search("2000"));
+console.log(search(""));
+
+// Adding array of tracks
