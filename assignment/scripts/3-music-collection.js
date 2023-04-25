@@ -34,6 +34,9 @@ for (let myArray of array) {
 }
 showCollection((collection));
 
+
+
+
 function findByArtist(artist) {
     let holdArray = [];
     for (let match of collection) {
@@ -44,6 +47,21 @@ function findByArtist(artist) {
     }
         return holdArray;
     }
-  let me = findByArtist("SZA");
-  console.log(me);
+  let artistFound = findByArtist("SZA");
+  console.log(artistFound);
+
+  let artistNotFound = findByArtist("Maxwell");
+  console.log(artistNotFound);
+
+  describe("find artisit", () => {
+    it("add matching artiist to the array", () => {
+    expect(findByArtist("SZA")).toEqual("2")
+    })
+    });
+
+    describe("find artisit", () => {
+        it("add matching artiist to the array", () => {
+        expect(findByArtist("Maxwell")).toEqual("0")
+        })
+        });
 
