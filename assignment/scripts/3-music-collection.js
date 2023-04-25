@@ -125,3 +125,56 @@ console.log(search());
 console.log(search({}));
 
 
+//Final Stretch Goal
+
+let arrarofTracks = [
+    {
+        trackOne: 'Around the World 3:59',
+        trackTwo:'Californitcation 5:22',
+        trackThree: 'Road Trippin 3:26'
+        
+    },
+    {
+        trackOne: 'Stadium Arcadium 5:16',
+        trackTwo:'21st Century 4:22',
+        trackThree: 'She Looks to Me 4:06'
+        
+    },
+     {
+        trackOne: 'Spaceman 4:12',
+        trackTwo:'We got the moves 3:36',
+        trackThree: 'Parasite 2:59'
+        
+    },
+    {
+        track: 'Crystals 3:39',
+        trackTwo:'Pitch Blease 3:19',
+        trackThree: 'My Own Summer 3:41'
+        
+    },
+    {
+        trackOne: 'Mighty 3:22',
+        trackTwo:'Lay Down 3:09',
+        trackThree: 'Wonda 3:44'
+        
+    },
+    {
+        trackOne: 'Maniac 4:11',
+        trackTwo:'Cotton Heads 3:38',
+        trackThree: 'Queens 4:06'
+        
+    },
+    {
+        trackOne: 'Fargo 1:20',
+        trackTwo:'Moonshine 3:33',
+        trackThree: 'Waterguns 3:30'
+        
+    }
+];
+
+let recordswithTracks = arrayofRecords.concat(arrarofTracks);
+
+console.log(recordswithTracks);
+
+//This did not work fully I think I would have to use a for of loop and have the new array
+//contain a similar parameter such as artist
