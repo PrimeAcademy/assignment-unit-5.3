@@ -3,16 +3,18 @@ console.log('***** Music Collection *****')
 
 let collection = [];
 
-function addToCollection(title, artist, yearPublished){
+function addToCollection(title, artist, yearPublished, tracks){
     let newAlbum = {
         title: title ,
         artist: artist ,
-        yearPublished: yearPublished
+        yearPublished: yearPublished,
+        tracks: tracks,
     }
     collection.push(newAlbum);
-    return newAlbum;
+    return collection;
 };
 
+console.log('--add to collection--');
 console.log('New album added:', addToCollection('Enema of the State', 'blink 182', '1999'));
 console.log('New album added:', addToCollection('Take Off Your Pants and Jacket', 'blink 182', '2001'));
 console.log('New album added:', addToCollection('The Colour and the Shape', ' Foo Fighters', '1997'));
@@ -70,6 +72,21 @@ console.log({artistTest1: findByArtist('blink182')});
 
 
 // ### Stretch goals
+
+// console.log(JSON.stringify(collection));
+
+// function search(toSearch){
+//     musicSearch = [];
+//     for (recor of collection){
+//         if(record === toSearch){
+//            collection.push(toSearch) 
+//         }else{
+//             return collection;
+//         }
+//     }
+// }
+
+// search('blink 182');
 
 // - Create a function called `search`. This function should:
 //   - Take an input parameter for a search criteria object. Create your solution based on a 
