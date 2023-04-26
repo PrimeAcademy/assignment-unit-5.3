@@ -13,8 +13,8 @@ function addToCollection(title, artist, yearPublished){
     return newAlbum;
 };
 
-console.log('New album added:', addToCollection('Enema of the State', 'Blink 182', '1999'));
-console.log('New album added:', addToCollection('Take Off Your Pants and Jacket', 'Blink 182', '2001'));
+console.log('New album added:', addToCollection('Enema of the State', 'blink 182', '1999'));
+console.log('New album added:', addToCollection('Take Off Your Pants and Jacket', 'blink 182', '2001'));
 console.log('New album added:', addToCollection('The Colour and the Shape', ' Foo Fighters', '1997'));
 console.log('New album added:', addToCollection('By the Way', 'Red Hot Chili Peppers', '2002'));
 console.log('New album added:', addToCollection('Dookie', 'Green Day', '1994'));
@@ -31,7 +31,7 @@ console.log('--SHOW COLLECTION FUNCTION--');
 //   - Loop over the array and console.log each album's information formatted like: `TITLE by ARTIST, published in YEAR`.
 
 function showCollection(albumArray){
-    console.log('My albums so far:',albumArray.lenght)
+    console.log('My albums so far:',albumArray.length)
     for (newAlbum of albumArray){
         console.log(`${newAlbum.title} by ${newAlbum.artist} in ${newAlbum.yearPublished}`);
     }
@@ -52,14 +52,14 @@ console.log('--FIND BY ARTIST FUNCTION--');
 function findByArtist(artist){
     let artistArray = []
     for (let newAlbum of collection){
-        if (artist === newAlbum.artist);
+        if (artist.toLowerCase() === newAlbum.artist.toLowerCase());
         artistArray.push(newAlbum);
         return artistArray;
     } 
     return artistArray;
 }
 
-console.log('Album by same artist:', findByArtist('blink 182'));
+console.log('Album by same artist:', findByArtist('Blink 182'));
 console.log({artistTest1: findByArtist('blink182')});
 
 // - Test the `findByArtist` function. Make sure to test with an artist you know is in the 
