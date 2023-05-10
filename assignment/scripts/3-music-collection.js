@@ -16,7 +16,7 @@ function addToCollection(title, artist, yearPublished) {
 // Added new records object to the collection array.
 // Return records.
 
-let albumOne = addToCollection("Chime", "Dessa", 2018);
+let albumOne = addToCollection("Chime", "Dessa", "2018");
 console.log(albumOne);
 let albumTwo = addToCollection("Preachers Daughter", "Ethel Cain", 2022);
 console.log(albumTwo);
@@ -40,9 +40,35 @@ console.log(collection);
 function showCollection(array) {
   console.log(`Number of items: ${array.length}`);
   for (i = 0; i < array.length; i++) {
-   let item = array[i];
-   console.log(item);
-//     console.log(`${title} by ${artist}, published in ${yearPublished}`);
-   }
+    let item = array[i];
+    console.log(item);
+    console.log(
+      `${item.title} by ${item.artist}, published in ${item.yearPublished}`
+    );
+  }
+  return "done";
 }
 console.log(showCollection(collection));
+
+/**
+ *
+ * @param {String} artist The name of the artist
+ * @param {Array} array The items to search through
+ * @return {Array} Return the array with the matching results. If no results are found, return an empty array.
+ */
+function findByArtist(tomato) {
+  console.log("findByArtist was called", tomato);
+  let matches = [];
+  for (let record of collection) {
+    console.log(record);
+    if(record.artist === tomato){
+        matches.push(record);  
+    }
+    
+  }
+  return matches;
+}
+console.log("Matches: ", findByArtist("Sufjan Stevens"));
+// console.log("Matches: ", findByArtist("sza"));
+// console.log("Matches: ", findByArtist("Dessa"));
+
